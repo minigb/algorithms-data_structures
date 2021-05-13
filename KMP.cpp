@@ -1,13 +1,18 @@
+#include <string>
+#include <vector>
+using namespace std;
+using ull = unsigned long long;
+
 class KMP {
 public:
 	string str, pat;
-	vector<int> table;
-	vector<int> ans;
-		
+	vector<ull> table;
+	vector<ull> ans;
+
 	void getTable() {
 		table.resize(pat.length());
-		int left = 0;
-		for (int i = 1; i < pat.length(); i++) {
+		ull left = 0;
+		for (ull i = 1; i < pat.length(); i++) {
 			while (left > 0 && pat[left] != pat[i]) {
 				left = table[left - 1];
 			}
@@ -20,8 +25,8 @@ public:
 
 	void getAns() {
 		getTable();
-		int patIdx = 0;
-		for (int strIdx = 0; strIdx < str.length(); strIdx++) {
+		ull patIdx = 0;
+		for (ull strIdx = 0; strIdx < str.length(); strIdx++) {
 			while (patIdx > 0 && pat[patIdx] != str[strIdx]) {
 				patIdx = table[patIdx - 1];
 			}
