@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <vector>
 #include <algorithm>
 #define ENDL '\n'
@@ -30,15 +29,15 @@ public:
 		return end;
 	}
 
-	void printAll(ofstream& fileOut) {
+	void printAll(ostream& out) {
 		vector<T> tempTree = tree;
 		int tempEnd = end;
 
 		while (!empty()) {
-			fileOut << top() << ' ';
+			out << top() << ' ';
 			pop();
 		}
-		fileOut << ENDL;
+		out << ENDL;
 
 		end = tempEnd;
 		for (int i = 1; i < end; i++) {
